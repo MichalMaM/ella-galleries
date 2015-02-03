@@ -49,3 +49,4 @@ INSTALLED_APPS = (
     'ella_galleries',
 )
 
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
