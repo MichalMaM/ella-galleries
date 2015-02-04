@@ -42,7 +42,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.redirects',
     'django.contrib.admin',
-    'django.contrib.comments',
 
     'ella.core',
     'ella.photos',
