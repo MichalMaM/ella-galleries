@@ -21,7 +21,6 @@ res = {
     'item_prefix': lazy_slugify(_('Item')),
 }
 
-lazy_regex(r'^%(item_prefix)s/%(item_slug)s/%(url_remainder)s$', res)
 
 urlpatterns = patterns(
     '',
