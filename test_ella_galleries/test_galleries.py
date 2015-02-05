@@ -11,9 +11,6 @@ from ella.utils.test_helpers import create_basic_categories, create_photo
 from test_ella_galleries import template_loader
 from ella.utils.timezone import utc_localize
 
-# FIXME hack alert - we are calling the registration here, it should be dealt
-# with in the project itself somehow
-from ella_galleries import register
 from ella_galleries.models import Gallery
 
 def create_and_publish_gallery(case):
