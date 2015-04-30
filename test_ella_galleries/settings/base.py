@@ -10,7 +10,7 @@ MEDIA_ROOT = join(FILE_ROOT, 'static')
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
-    'test_ella_galleries.template_loader.load_template_source',
+    'test_ella_galleries.template_loader.GlobalMemTemplateLoader',
 )
 
 
