@@ -41,8 +41,5 @@ setup(
         'ella>=3.0.0',
         'anyjson',
     ],
-    setup_requires=[
-        'setuptools_dummy',
-    ],
     test_suite='test_ella_galleries.run_tests.run_all'
 )
