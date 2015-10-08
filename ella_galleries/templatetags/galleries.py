@@ -106,7 +106,7 @@ class GalleryNavigationNode(template.Node):
         navigation = []
 
         if count > 0:
-            keys = gallery.items.keys()
+            keys = list(gallery.items.keys())
 
             # Last page number
             last_page = count / step
@@ -135,7 +135,7 @@ class GalleryNavigationNode(template.Node):
                 on_current_page = current_position_page == page and True or False
 
                 navigation.append({
-                    'first_item_url': gallery.items[ keys[i * step] ][0].get_absolute_url(),
+                    'first_item_url': gallery.items[keys[i * step]][0].get_absolute_url(),
                     'start_item_number': start_item,
                     'stop_item_number': stop_item,
                     'page_number': page,

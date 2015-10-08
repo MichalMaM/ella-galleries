@@ -14,7 +14,7 @@ def gallery_item_detail(request, context, item_slug=None, url_remainder=None):
     '''
     gallery = context['object']
     item_sorted_dict = gallery.items
-    item_sorted_dict_values = item_sorted_dict.values()
+    item_sorted_dict_values = list(item_sorted_dict.values())
     count = len(item_sorted_dict)
     count_str = ungettext('%(count)d object total', '%(count)d objects total',
         count) % {'count': count}

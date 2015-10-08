@@ -1,4 +1,6 @@
 from collections import defaultdict
+
+from django.utils import six
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 from django.utils.datastructures import SortedDict
@@ -41,7 +43,7 @@ class Gallery(Publishable):
                 self._items = self._get_gallery_items()
             # we don't cache the .gallery property, so tack it on here to avoid
             # FK lookups
-            for _, item in self._items.iteritems():
+            for _, item in six.iteritems(self._items):
                 item.gallery = self
             return self._items
         return SortedDict()
@@ -67,7 +69,7 @@ class Gallery(Publishable):
 
         it = self.items
         if it:
-            return it.values()[0].photo
+            return list(it.values())[0].photo
 
         return None
 
