@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from collections import defaultdict
 
 from django.utils import six
@@ -6,6 +8,7 @@ from django.utils.translation import ugettext_lazy as _
 from django.utils.datastructures import SortedDict
 from django.core.cache import cache
 from django.core.validators import validate_slug
+from django.utils.encoding import python_2_unicode_compatible
 
 from app_data import AppDataField
 
@@ -74,6 +77,7 @@ class Gallery(Publishable):
         return None
 
 
+@python_2_unicode_compatible
 class GalleryItem(models.Model):
     """
     One photo in a ``Gallery``. ``GalleryItem`` adds specific metadata for
@@ -100,8 +104,8 @@ class GalleryItem(models.Model):
         verbose_name = _('Gallery item')
         verbose_name_plural = _('Gallery items')
 
-    def __unicode__(self):
-        return u"%s %s %s" % (self.get_item_title(), _('in gallery'), self.gallery.title)
+    def __str__(self):
+        return "%s %s %s" % (self.get_item_title(), _('in gallery'), self.gallery.title)
 
     def __get_slug(self):
         for slug, item in self.gallery.items.items():

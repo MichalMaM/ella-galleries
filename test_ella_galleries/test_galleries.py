@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+from __future__ import unicode_literals
+
 from datetime import datetime
 from django.test import TestCase
 from django.test.utils import setup_test_environment
@@ -15,11 +17,11 @@ from ella_galleries.models import Gallery
 
 def create_and_publish_gallery(case):
     case.publishable = Gallery.objects.create(
-        title=u'First Gallery',
-        slug=u'first-gallery',
-        description=u'Some\nlonger\ntext',
+        title='First Gallery',
+        slug='first-gallery',
+        description='Some\nlonger\ntext',
         category=case.category_nested,
-        content=u'Some\neven\nlonger\ntext',
+        content='Some\neven\nlonger\ntext',
         publish_from=utc_localize(datetime(2008, 1, 10)),
         published=True
     )

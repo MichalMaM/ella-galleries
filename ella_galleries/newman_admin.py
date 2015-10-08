@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 import ella_newman as newman
 
 from django.utils.translation import ugettext_lazy as _
@@ -19,7 +21,7 @@ class GalleryItemForm(modelforms.ModelForm):
         if key in self.data and self.initial.get(ini_key, False):
             if not self.data[key]:
                 self.data._mutable = True
-                self.data[key] = u'%d' % self.initial[ini_key]
+                self.data[key] = '%d' % self.initial[ini_key]
                 self.data._mutable = False
         super(GalleryItemForm, self).full_clean()
 
