@@ -109,12 +109,12 @@ class GalleryNavigationNode(template.Node):
             keys = list(gallery.items.keys())
 
             # Last page number
-            last_page = count / step
+            last_page = count // step
             if last_page * step < count:
                 last_page = last_page + 1
 
             # Current page number
-            current_position_page = position / step
+            current_position_page = position // step
             if current_position_page * step < position:
                 current_position_page = current_position_page + 1
 
