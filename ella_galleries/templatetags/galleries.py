@@ -7,13 +7,13 @@ register = template.Library()
 
 def gallery_func(func, value, param):
     if not ',' in param:
-        raise template.TemplateSyntaxError, "gallery filters take one parameter in format COUNT_PER_PAGE,PAGE_WIDTH"
+        raise template.TemplateSyntaxError("gallery filters take one parameter in format COUNT_PER_PAGE,PAGE_WIDTH")
     on_page, per_page = param.split(',')
     try:
         value = int(value)
         on_page, per_page = int(on_page), int(per_page)
     except ValueError:
-        raise template.TemplateSyntaxError, "Value and parameters to gallery filters must be integers"
+        raise template.TemplateSyntaxError("Value and parameters to gallery filters must be integers")
 
     return func(value, on_page, per_page)
 
@@ -69,26 +69,26 @@ def gallery_navigation(parser, token):
     try:
         tag_name, for_arg, gallery, step_arg, step, position_arg, position, as_arg, result = token.split_contents()
     except ValueError:
-        raise template.TemplateSyntaxError, "Four arguments are expected in %r tag" % token.split_contents()[0]
+        raise template.TemplateSyntaxError("Four arguments are expected in %r tag" % token.split_contents()[0])
 
     params = {}
 
     if for_arg == 'for':
         params['for'] = gallery
     else:
-        raise template.TemplateSyntaxError, "Unknown argument %r in tag %r" % (for_arg, tag_name)
+        raise template.TemplateSyntaxError("Unknown argument %r in tag %r" % (for_arg, tag_name))
     if step_arg == 'step':
         params['step'] = step
     else:
-        raise template.TemplateSyntaxError, "Unknown argument %r in tag %r" % (step_arg, tag_name)
+        raise template.TemplateSyntaxError("Unknown argument %r in tag %r" % (step_arg, tag_name))
     if position_arg == 'current_position':
         params['position'] = position
     else:
-        raise template.TemplateSyntaxError, "Unknown argument %r in tag %r" % (position_arg, tag_name)
+        raise template.TemplateSyntaxError("Unknown argument %r in tag %r" % (position_arg, tag_name))
     if as_arg == 'as':
         params['as'] = result
     else:
-        raise template.TemplateSyntaxError, "Unknown argument %r in tag %r" % (as_arg, tag_name)
+        raise template.TemplateSyntaxError("Unknown argument %r in tag %r" % (as_arg, tag_name))
 
     return GalleryNavigationNode(params)
 
