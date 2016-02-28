@@ -35,6 +35,20 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
 )
 
+TEMPLATE_OPTIONS = {
+    'context_processors': TEMPLATE_CONTEXT_PROCESSORS,
+    'loaders': TEMPLATE_LOADERS,
+}
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        # 'APP_DIRS': True,
+        # 'DIRS': TEMPLATE_DIRS,
+        'OPTIONS': TEMPLATE_OPTIONS
+    },
+]
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -45,6 +59,7 @@ INSTALLED_APPS = (
 
     'ella.core',
     'ella.photos',
+    'ella.articles',
     'ella_galleries',
 )
 
