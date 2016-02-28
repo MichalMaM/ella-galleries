@@ -5,7 +5,6 @@ from collections import defaultdict
 from django.utils import six
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.utils.datastructures import SortedDict
 from django.core.cache import cache
 from django.core.validators import validate_slug
 from django.utils.encoding import python_2_unicode_compatible
@@ -17,6 +16,11 @@ from ella.core.cache import cache_this, CachedForeignKey
 from ella.core.custom_urls import resolver
 from ella.core.views import get_templates_from_publishable
 from ella.photos.models import Photo
+
+try:
+    from collections import OrderedDict
+except ImportError:
+    from django.utils.datastructures import SortedDict as OrderedDict
 
 
 def get_gallery_key(gallery):
@@ -49,13 +53,13 @@ class Gallery(Publishable):
             for _, item in six.iteritems(self._items):
                 item.gallery = self
             return self._items
-        return SortedDict()
+        return OrderedDict()
 
     @cache_this(get_gallery_key)
     def _get_gallery_items(self):
         slugs_count = defaultdict(int)
         slugs_unique = set()
-        res = SortedDict()
+        res = OrderedDict()
 
         for item in self.galleryitem_set.order_by('order'):
             slug = item.get_item_slug()

@@ -35,7 +35,7 @@ def gallery_item_detail(request, context, item_slug=None, url_remainder=None):
             item = item_sorted_dict[item_slug]
         except KeyError:
             raise Http404()
-        item_index = item_sorted_dict.keyOrder.index(item_slug)
+        item_index = item_sorted_dict_values.index(item)
         if item_index > 0:
             previous = item_sorted_dict_values[item_index - 1]
         if (item_index + 1) < count:
