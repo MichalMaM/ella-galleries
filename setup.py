@@ -38,6 +38,7 @@ setup(
     ],
     install_requires=[
         'setuptools>=0.6b1',
+        'django>=1.8',
         'ella>=3.0.0',
         'anyjson',
     ],
