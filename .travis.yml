@@ -4,6 +4,7 @@ python:
   - "3.4"
   - "3.5"
 install:
+  - "if [[ $DJANGO_VERSION == 'dev' ]]; then pip install git+https://github.com/django/django.git#egg=Django; else pip install Django==$DJANGO_VERSION; fi"
   - sudo apt-get install libjpeg62-dev
   - pip install Django==$DJANGO_VERSION
   - pip install -r dev_requirements.txt
@@ -12,4 +13,5 @@ env:
   - DJANGO_VERSION="1.8.5"
   - DJANGO_VERSION="1.9.2"
   - DJANGO_VERSION="1.10"
+  - DJANGO_VERSION="dev"
 script: python setup.py test
